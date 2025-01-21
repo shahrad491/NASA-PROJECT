@@ -2,10 +2,12 @@ import request from "supertest";
 
 import app from "../../app.js";
 import { mongoConnect, mongoDisconnect } from "../../services/mongo.js";
+import { loadData } from "../../models/planets.model.js";
 
 describe("Starts the Tests", () => {
   beforeAll(async () => {
     await mongoConnect();
+    await loadData();
   });
   describe("testing GET /launches", () => {
     test("it should responed with 200 ", async () => {
