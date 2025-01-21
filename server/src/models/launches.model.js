@@ -99,8 +99,11 @@ export async function launchExists(id) {
 
 export async function getLatestFlightNum() {
   const FlightNum = await launchesData.findOne().sort("-flightNumber");
-  if (!FlightNum) FlightNum = DEFAULT_FLIGHTNUM;
-  return FlightNum.flightNumber;
+  if (!FlightNum) {
+    return DEFAULT_FLIGHTNUM;
+  } else {
+    return FlightNum.flightNumber;
+  }
 }
 
 export async function getAllLaunches(skip, limit) {
